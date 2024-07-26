@@ -8,6 +8,8 @@ export default function Register() {
     const first_name = useRef()
     const last_name = useRef()
     const email = useRef()
+    const address = useRef()
+    const Ewall = useRef()
     const password = useRef()
     const password2 = useRef(undefined)
 
@@ -18,10 +20,12 @@ export default function Register() {
             first_name: first_name.current.value,
             last_name: last_name.current.value,
             email: email.current.value,
+            address: address.current.value,
             password: password.current.value,
-            password2: password2.current.value
+            password2: password2.current.value,
+            eth_wallet: Ewall.current.value
           };
-
+          
         setLoading(true)
 
         try {
@@ -48,6 +52,12 @@ export default function Register() {
                 </div>
                 <div className="mb-3">
                     <input type="email" placeholder='Email' autoComplete='off' className='form-control' id="email" ref={email} />
+                </div>
+                <div className="mb-3">
+                    <input type="text" placeholder='Address' autoComplete='off' className='form-control' id="address" ref={address} />
+                </div>
+                <div className="mb-3">
+                    <input type="text" placeholder='E Wallet Address' autoComplete='off' className='form-control' id="Ewall" ref={Ewall} />
                 </div>
                 <div className="mb-3">
                     <input type="password" placeholder='Password' autoComplete='off' className='form-control' id="password" ref={password} />

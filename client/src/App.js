@@ -7,7 +7,6 @@ import User from './pages/auth/User'
 import PersistLogin from './components/PersistLogin';
 import Navbar from "./components/Navbar"
 
-
 function App() {
   return <>
     <Navbar />

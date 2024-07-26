@@ -18,7 +18,7 @@ export const AuthContext = createContext({
 export function AuthContextProvider(props) {
 
     const [user, setUser] = useState({})
-    const [accessToken, setAccessToken] = useState()
+    const [accessToken, setAccessToken] = useState(localStorage.getItem('access_token'));
     const [refreshToken, setRefreshToken] = useState()
     const [csrftoken, setCSRFToken] = useState()
     const [isLoggedIn, setIsLoggedIn] = useState(JSON.parse(localStorage.getItem('isLoggedIn')) || false)

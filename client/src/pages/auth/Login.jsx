@@ -31,8 +31,9 @@ export default function Login() {
                 email,
                 password
             }))
-
+           
             setAccessToken(response?.data?.access_token)
+            localStorage.setItem('access_token',response?.data?.access_token)
             setCSRFToken(response.headers["x-csrftoken"])
             setIsLoggedIn(true);
             setEmail()
