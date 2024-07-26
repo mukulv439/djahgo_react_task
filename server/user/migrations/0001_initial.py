@@ -19,6 +19,7 @@ class Migration(migrations.Migration):
                 ('last_login', models.DateTimeField(blank=True, null=True, verbose_name='last login')),
                 ('email', models.EmailField(max_length=254, unique=True)),
                 ('username', models.CharField(max_length=50)),
+                ('eth_wallet',models.CharField(max_length=42, blank=True, null=True)),
                 ('is_admin', models.BooleanField(default=False)),
                 ('is_active', models.BooleanField(default=True)),
                 ('is_staff', models.BooleanField(default=False)),
